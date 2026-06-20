@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'jugadores',
     'corsheaders',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    'drf_spectacular'
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -42,6 +43,7 @@ REST_FRAMEWORK = {
     ),
     'ACCESS_TOKEN_LIFETIME': timedelta(days=30),  # Ejemplo: 30 días
     'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
     
     # settings.py
 

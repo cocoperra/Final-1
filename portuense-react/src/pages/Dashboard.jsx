@@ -1,3 +1,5 @@
+//TODO: BIG ONE. Migrar el sistema actual de vistas y permisos a uno de capabilites. Mirar bien docs/migration.md
+
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
@@ -22,13 +24,15 @@ export default function Dashboard() {
     );
     const storedVistas = JSON.parse(sessionStorage.getItem("userVistas") || "[]");
     setPermisos(storedPerms);
-    setVistas(storedVistas);
+    setVistas(storedVistas);  //TODO: Unificar los permisos y las vistas en un mismo objeto
   }, []);
 
   const tienePermisoSen = permisos.some((p) => p.categoria === "SEN" && p.subcategoria === "A");
   const tienePermisoAcademia = permisos.some((p) => p.categoria !== "SEN" || (p.categoria === "SEN" && p.subcategoria !== "A"));
 
   // Calcula los paneles visibles
+
+  //FIXME: Esto es hardcoded permisos en el frontend. Sería más interesante darle al administrador 
   const paneles = [];
   if (tienePermisoSen) {
     paneles.push({

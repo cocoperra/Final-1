@@ -124,7 +124,7 @@ def crear_usuario(request):
 
     return Response({'message': 'Usuario creado con éxito'}, status=201)
 
-
+#FIXME: ME se está convirtiendo en un bootstrap gordo. Hay que sacar los permisos, las vistas y dejar eso en manos del frontend.
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -138,8 +138,8 @@ def me_view(request):
         "is_staff": user.is_staff,
         "is_superuser": user.is_superuser,
         "groups": [group.name for group in user.groups.all()],
-        "permisos": list(permisos.values('categoria', 'subcategoria', 'equipo')),
-        "vistas": list(vistas),
+        "permisos": list(permisos.values('categoria', 'subcategoria', 'equipo')), #TODO: Simplificar nomenclatura de permisos players.{category}.{subcategory}.{sex}. [read,write....]
+        "vistas": list(vistas), #TODO: Eliminar vistas, esto es muy UI confusing
     })
 
 @api_view(['GET'])
