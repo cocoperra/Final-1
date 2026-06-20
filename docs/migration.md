@@ -216,7 +216,7 @@ Después:
 
     · Roles -> identidad
     · Capabilities -> acceso
-    · Scope -> contexto
+    · Scope -> contextoo
     · Frontend -> render puro
     · Backend -> autoridad única
 
